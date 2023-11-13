@@ -1,4 +1,4 @@
-import { nanoid } from '../node_modules/nanoid/nanoid.js';
+import { nanoid } from '../../node_modules/nanoid/nanoid.js';
 import { ItemType, ItemColor } from './consts.js';
 
 const ITEMS_DATA = new Map();
