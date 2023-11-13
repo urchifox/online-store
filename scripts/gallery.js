@@ -37,10 +37,13 @@ const getShevronTemplate = (discount, cashback, isHit) => {
 	}
 };
 
-const getTemplate = (id, {type, brand, model, price, discount, cashback, isHit, isAvailable, rate, rewievsCount, pictures, memoryOptions}) => `
+const getPicturesTemplate = (pictures) => pictures.reduce(
+	(accumulator, picture) => `${accumulator}<img class="card-small__cover" src="images/covers/${picture}" alt="">`, '');
+
+const getTemplate = (id, {type, brand, model, price, discount, cashback, isHit, isAvailable, rate, rewievsCount, colorOptions, pictures, memoryOptions}) => `
 	<li data-id="${id}" class="card-small gallery__card-small">
 		<h2 class="card-small__name">
-			<a href="#" class="card-small__name-link link">${type} ${brand} ${model} ${Math.max(...memoryOptions)}, {цвет}</a>
+			<a href="#" class="card-small__name-link link">${type} ${brand} ${model} ${Math.max(...memoryOptions)}, ${colorOptions[0].name}</a>
 		</h2>
 		${getShevronTemplate(discount, cashback, isHit)}
 		<p class="card-small__price">${price}<span class="visually-hidden">рублей</span></p>
@@ -50,7 +53,7 @@ const getTemplate = (id, {type, brand, model, price, discount, cashback, isHit, 
 			<a href="#" class="card-small__reviews link">${getRewievsCountMessage(rewievsCount)}</a>
 		</div>
 		<a href="#" class="card-small__cover-link">
-			<img class="card-small__cover" src="images/covers/{${brand}-${model}}.png" alt="">
+			${getPicturesTemplate(pictures)}		
 		</a>
 		<div class="card-small__buttons">
 			<button class="card-small__buy button-solid">В корзину</button>
