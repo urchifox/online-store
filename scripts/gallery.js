@@ -8,17 +8,17 @@ const pluralRules = new Intl.PluralRules('ru-RU');
 const getRewievsCountMessage = (number) => {
 	switch (pluralRules.select(number)) {
 		case 'one': {
-			return `${number} отзыв`;
+			return `${number.toLocaleString('ru-RU')} отзыв`;
 		}
 		case 'few': {
-			return `${number} отзыва`;
+			return `${number.toLocaleString('ru-RU')} отзыва`;
 		}
 		case 'many': {
-			return `${number} отзывов`;
+			return `${number.toLocaleString('ru-RU')} отзывов`;
 		}
 		// case 'other'
 		default: {
-			return `${number} отзыва`;
+			return `${number.toLocaleString('ru-RU')} отзыва`;
 		}
 	}
 };
@@ -35,6 +35,29 @@ const getShevronTemplate = (discount, cashback, isHit) => {
 	if (isHit) {
 		return '<p class="card-small__shevron card-small__shevron_hit">Хит</p>';
 	}
+
+	return '';
+};
+
+const getPriceText = (price, discount) => {
+	if (discount > 0) {
+		const oldPrice = price;
+		const newPrice = price * (100 - discount) / 100;
+		return `<p class="card-small__price">
+					<span class="card-small__price-current">${newPrice.toLocaleString('ru-RU')}
+						<span class="visually-hidden">рублей</span>
+					</span>
+					<s class="card-small__price-old">${oldPrice.toLocaleString('ru-RU')}
+						<span class="visually-hidden">рублей</span>
+					</s>
+				</p>`;
+	}
+
+	return `<p class="card-small__price">
+				<span class="card-small__price-current">${price.toLocaleString('ru-RU')}
+					<span class="visually-hidden">рублей</span>
+				</span>
+			</p>`;
 };
 
 const getPicturesTemplate = (pictures) => pictures.reduce(
@@ -43,10 +66,10 @@ const getPicturesTemplate = (pictures) => pictures.reduce(
 const getTemplate = (id, {type, brand, model, price, discount, cashback, isHit, isAvailable, rate, rewievsCount, colorOptions, pictures, memoryOptions}) => `
 	<li data-id="${id}" class="card-small gallery__card-small">
 		<h2 class="card-small__name">
-			<a href="#" class="card-small__name-link link">${type} ${brand} ${model} ${Math.max(...memoryOptions)}, ${colorOptions[0].name}</a>
+			<a href="#" class="card-small__name-link link">${type} ${brand} ${model} ${Math.max(...memoryOptions)}Gb, ${colorOptions[0].name}</a>
 		</h2>
 		${getShevronTemplate(discount, cashback, isHit)}
-		<p class="card-small__price">${price}<span class="visually-hidden">рублей</span></p>
+		${getPriceText(price, discount)}
 		<div class="card-item__info">
 			<p class="card-small__availability">${isAvailable ? 'Есть' : 'Нет'} в наличии</p>
 			<p class="card-small__rate"><span class="visually-hidden">Рейтинг</span>${rate.toFixed(1)}</p>

@@ -5,7 +5,7 @@
     box-sizing: border-box;
     display: grid;
     grid-template-rows: 
-        219px
+        199px
         max-content
         max-content
         max-content
@@ -62,7 +62,13 @@
     font-weight: 500;
 }
 
-.card-small__price::after {
+.card-small__price-old {
+    margin-left: 12px;
+    color: #797D80;
+    font-size: 14px;
+}
+
+.card-small__price *::after {
     content: "	\20BD";
 }
 
@@ -70,8 +76,6 @@
     margin-bottom: 30px;
     display: flex;
     flex-wrap: wrap;
-    
-    justify-content: space-between;
     align-items: center;
 
     font-size: 12px;
@@ -79,6 +83,7 @@
 
 .card-small__availability {
     margin: 0;
+    margin-right: auto;
     padding-left: calc(12px + 10px);
     background-image: url('../images/icons/check-icon.svg');
     background-repeat: no-repeat;
