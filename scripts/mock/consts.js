@@ -1,6 +1,6 @@
 export const ItemType = {
-	SMARTPHONE: 'смартфон',
-	TABLE: 'планшет',
+	SMARTPHONE: 'Смартфон',
+	TABLE: 'Планшет',
 };
 
 export const ItemBrand = {
