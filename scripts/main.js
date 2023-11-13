@@ -1,7 +1,8 @@
-import ItemsModel from './items-model.js';
-import GalleryPresenter from './gallery-presenter.js';
+import {render as renderGallery} from './gallery.js';
 
-const itemsModel = new ItemsModel();
-const galleryPresenter = new GalleryPresenter({itemsModel});
+const onCardClick = (evt) => {
+	evt.preventDefault();
+	const cardId = evt.target.closest('.card-small').dataset.id;
+};
 
-galleryPresenter.init();
+renderGallery(onCardClick);
