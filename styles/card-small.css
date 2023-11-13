@@ -1,0 +1,159 @@
+.card-small {
+    position: relative;
+    padding: 20px 10px;
+    width: 270px;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-rows: 
+        219px
+        max-content
+        max-content
+        max-content
+        1fr;
+    flex-direction: column;
+
+    background-color: #FFFFFF;
+    box-shadow: 0px 4px 15px 0px rgba(157, 162, 166, 0.12);
+    transition: transform 0.3s;
+}
+.card-small:hover {
+    transform: scale(1.1);
+}
+
+.card-small__name {
+    margin: 0;
+    margin-bottom: 15px;
+
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.card-small__name-link {
+    color: inherit;
+    text-decoration: none;
+}
+
+.card-small__shevron {
+    position: absolute;
+    margin: 0;
+    top: 10px;
+    left: 10px;
+    padding: 5px 8px;
+    border: 1px solid ;
+    font-size: 10px;
+    font-weight: 500;
+}
+.card-small__shevron_hit {
+    border-color: #8962F8;
+}
+.card-small__shevron_discount {
+    border-color: #FB212F;
+}
+.card-small__shevron_cashback {
+    border-color: #5EBAD9;
+}
+
+.card-small__price {
+    margin: 0;
+    margin-bottom: 10px;
+    order: -1;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+}
+
+.card-small__price::after {
+    content: "	\20BD";
+}
+
+.card-item__info {
+    margin-bottom: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    
+    justify-content: space-between;
+    align-items: center;
+
+    font-size: 12px;
+}
+
+.card-small__availability {
+    margin: 0;
+    padding-left: calc(12px + 10px);
+    background-image: url('../images/icons/check-icon.svg');
+    background-repeat: no-repeat;
+    background-position: 0 50%;
+    background-size: 12px 7px;
+}
+
+.card-small__rating-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card-small__rate {
+    margin: 0;
+    padding-left: calc(5px + 16px);
+    font-weight: 500;
+    background-image: url('../images/icons/star-icon.svg');
+    background-repeat: no-repeat;
+    background-position: 0 50%;
+    background-size: 16px 16px;
+}
+
+.card-small__reviews {
+    margin-left: 10px;
+    color: #797D80;
+    text-decoration-line: underline;
+}
+
+.card-small__cover-link {
+    justify-self: center;
+    align-self: center;
+    margin-bottom: 20px;
+    order: -2;
+}
+
+.card-small__cover {
+    display: block;
+    width: fit-content;
+    height: 180px;
+}
+
+.card-small__buttons {
+    align-self: end;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-small__buy {
+    border: none;
+    border-radius: 4px;
+    width: 170px;
+    height: 35px;
+    color: #FFF;
+    font-weight: 500;
+}
+
+.card-small__favourite {
+    width: 35px;
+    height: 35px;
+    border: none;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+}
+
+.card-small__compare {
+    width: 35px;
+    height: 35px;
+    border: none;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+}
