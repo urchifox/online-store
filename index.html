@@ -8,9 +8,133 @@
 </head>
 <body>
     <main>
-        <h1 class="visually-hidden">Каталог товаров</h1>
-        <ul class="gallery main__gallery">
-        </ul>
+        <article class="card-full">
+            <div class="card-full__info-container">
+                <h1 class="card-full__name">${type} ${brand} ${model}, ${Math.max(memoryOptions)}, ${colorOptions[0].name}</h1>
+                <div class="card-full__info">
+                    <p class="card-full__availability">${isAvailable ? 'Есть' : 'Нет'} в наличии</p>
+                    <!-- <p class="card-full__availability">Есть в наличии</p> -->
+                    <div class="card-full__rating-container">
+                        <span class="visually-hidden">Рейтинг ${rate} из пяти</span>
+                        <div class="card-full__rate-icons-container" aria-hidden>
+                            <img src="./images/icons/star-icon.svg" alt="" class="card-full__rate-icon" width="17" height="17">
+                            <img src="./images/icons/star-icon.svg" alt="" class="card-full__rate-icon" width="17" height="17">
+                            <img src="./images/icons/star-icon.svg" alt="" class="card-full__rate-icon" width="17" height="17">
+                            <img src="./images/icons/star-icon.svg" alt="" class="card-full__rate-icon" width="17" height="17">
+                            <img src="./images/icons/star-icon.svg" alt="" class="card-full__rate-icon" width="17" height="17">
+                        </div>
+                        <a href="#" class="card-full__link link">${getRewievsCountMessage(rewievsCount)}</a>
+                        <!-- <a href="#" class="card-full__link link">2400000 отзывов</a> -->
+                    </div>
+                </div>
+                <form action="" class="card-full__form">
+                    <section class="card-full__section">
+                        <h2 class="card-full__subtitle">Объем памяти</h2>
+                        <div class="card-full__memory-labels-container">
+                            <label class="card-full__memory-label">
+                                ${memoryOption}Gb
+                                <input type="radio" name="memory" value="${memoryOption}" class="visually-hidden">
+                            </label>
+                        </div>
+                    </section>
+                    <section class="card-full__section">
+                        <h2 class="card-full__subtitle">Цвет</h2>
+                        <div class="card-full__color-labels-container">
+                            <label class="card-full__color-label" style="background-color: ${colorOption.code};">
+                                <span class="visually-hidden">${colorOption.name}</span>
+                                <input type="radio" name="color" value="${colorOption.name}" class="visually-hidden">
+                            </label>
+                        </div>
+                    </section>
+                </form>
+                <section class="card-full__section">
+                    <div class="card-full__features-title">
+                        <h3 class="card-full__subtitle">Характеристики</h3>
+                        <a href="#features" class="card-full__link link">Все характеристики</a>
+                    </div>
+                    <dl class="card-full__features">
+                        <div class="card-full__feature-row">
+                            <dt class="card-full__feature-name">Диагональ экрана, в дюймах:  </dt>
+                            <dd class="card-full__feature-value">${}</dd>
+                        </div>
+                        <div class="card-full__feature-row">
+                            <dt class="card-full__feature-name">Разрешение экрана, в пикселях: </dt>
+                            <dd class="card-full__feature-value">${}</dd>
+                        </div>
+                        <div class="card-full__feature-row">
+                            <dt class="card-full__feature-name">Встроенная память, в Гб: </dt>
+                            <dd class="card-full__feature-value">${}</dd>
+                        </div>
+                        <div class="card-full__feature-row">
+                            <dt class="card-full__feature-name">Оперативная память, в Гб: </dt>
+                            <dd class="card-full__feature-value">${}</dd>
+                        </div>
+                        <div class="card-full__feature-row">
+                            <dt class="card-full__feature-name">Емкость аккумулятора, в мА-ч: </dt>
+                            <dd class="card-full__feature-value">${}</dd>
+                        </div>
+                        <div class="card-full__feature-row">
+                            <dt class="card-full__feature-name">Количество основных камер: </dt>
+                            <dd class="card-full__feature-value">${}</dd>
+                        </div>
+                        <div class="card-full__feature-row">
+                            <dt class="card-full__feature-name">Год выхода модели: </dt>
+                            <dd class="card-full__feature-value">${}</dd>
+                        </div>
+                        <div class="card-full__feature-row">
+                            <dt class="card-full__feature-name">Тип дисплея:</dt>
+                            <dd class="card-full__feature-value">${}</dd>
+                        </div>
+                    </dl>
+                </section>
+                <div class="card-full__buying-container">
+                    <p class="card-small__price">Цена: <b class="card-small__price-value">${price.toLocaleString('ru-RU')} <span class="visually-hidden">рублей</span></b></p>
+                    <button class="card-full__button button-solid">Добавить в корзину</button>
+                    <button class="card-full__button button-outlined">Рассрочка от <span class="card-full__installment">10800</span><span class="visually-hidden">рублей в месяц</span></button>
+                </div>
+            </div>
+
+            <ul class="card-full__pictures-list">
+                <li class="card-full__picture-item">
+                    <img src="./images/covers/${picture}" alt="" class="card-full__picture">
+                </li>
+            </ul>
+
+            <ul class="card-full__tab-list" role="tablist">
+                <li id="description-tab" class="card-full__tab-item" role="tab" aria-controls="description" aria-selected="true">
+                    <a href="#description" class="card-full__tab-link">Описание</a>
+                </li>
+                <li id="features-tab" class="card-full__tab-item" role="tab" aria-controls="features" aria-selected="false">
+                    <a href="#features" class="card-full__tab-link">Характеристики</a>
+                </li>
+                <li id="accessories-tab" class="card-full__tab-item" role="tab" aria-controls="accessories" aria-selected="false">
+                    <a href="#accessories" class="card-full__tab-link">Аксессуары</a>
+                </li>
+                <li id="reveiws-tab" class="card-full__tab-item" role="tab" aria-controls="reveiws" aria-selected="false">
+                    <a href="#reveiws" class="card-full__tab-link">Отзывы</a>
+                </li>
+                <li id="questions-tab" class="card-full__tab-item" role="tab" aria-controls="questions" aria-selected="false">
+                    <a href="#questions" class="card-full__tab-link">Вопрос-ответ</a>
+                </li>
+            </ul>
+
+            <div id="description" class="card-full__tab-content" role="tabpanel" aria-labelledby="description-tab">
+                <p class="card-full__description">
+                    Смартфон iPhone 11 Pro 512Gb в корпусе черного цвета понравится пользователям не только большим объемом встроенной памяти. Гаджет нового поколения оснащен высокими технологиями будущего. Корпус модели теперь еще более усилен. 
+                </p>
+                <p class="card-full__description">
+                    Стекло обработано методом двойного ионного обмена. Водозащита позволяет выдержать четырехметровые волны. Главной особенностью модели iPhone 11 Pro является новая система трех камер, за счет слаженной работы которых удается создать фотографии профессионального качества. Область изображения увеличивается в 4 раза. Портретные фото, селфи и снимки движущихся объектов – все получается намного ярче. Режим ночной съемки включается автоматически, результат – контрастные фото с естественной цветопередачей.
+                </p>
+                <p class="card-full__description">
+                    Удивительно реалистичные видеоролики позволяют снимать мощный процессор и технологии машинного обучения. Изображение редактируется в режиме реального времени — выразительные лица и никакого шума    на заднем фоне.
+                </p>
+            </div>
+
+            <div class="card-full__tab-content" id="features" role="tabpanel" aria-labelledby="features-tab"></div>
+            <div class="card-full__tab-content" id="accessories" role="tabpanel" aria-labelledby="accessories-tab"></div>
+            <div class="card-full__tab-content" id="reveiws" role="tabpanel" aria-labelledby="reveiws-tab"></div>
+            <div class="card-full__tab-content" id="questions" role="tabpanel" aria-labelledby="questions-tab"></div>
+        </article>
     </main>
 
     <script type="module" src="./scripts/main.js"></script>

@@ -9,7 +9,7 @@
 .link:hover {
     color: #DE012C;
 }
-.link:focus,
+.link:focus-visible,
 .link:active {
     outline: none;
     color: #C20127;
@@ -19,14 +19,16 @@
 }
 
 .button-solid {
+    color: #FFF;
     transition: background 0.3s;
+    border: none;
     background: #DE012C;
     cursor: pointer;
 }
 .button-solid:hover {
     background: #C20127;
 }
-.button-solid:focus,
+.button-solid:focus-visible,
 .button-solid:active {
     border: 2px solid #001524;
     background: #DE012C;
@@ -43,11 +45,11 @@
     cursor: pointer;
 }
 .button-outlined:hover {
-    border: none;
+    border-color: transparent;
     color: #FFF;
     background: #001524;
 }
-.button-outlined:focus,
+.button-outlined:focus-visible,
 .button-outlined:active {
     border: 2px solid #001524;
     color: #1C1919;
