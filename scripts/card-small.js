@@ -1,24 +1,4 @@
-import { createElement } from './utils.js';
-
-const pluralRules = new Intl.PluralRules('ru-RU');
-
-const getRewievsCountMessage = (number) => {
-	switch (pluralRules.select(number)) {
-		case 'one': {
-			return `${number.toLocaleString('ru-RU')} отзыв`;
-		}
-		case 'few': {
-			return `${number.toLocaleString('ru-RU')} отзыва`;
-		}
-		case 'many': {
-			return `${number.toLocaleString('ru-RU')} отзывов`;
-		}
-		// case 'other'
-		default: {
-			return `${number.toLocaleString('ru-RU')} отзыва`;
-		}
-	}
-};
+import { createElement, getRewievsCountMessage } from './utils.js';
 
 const getShevronTemplate = (discount, cashback, isHit) => {
 	if (discount > 0) {
