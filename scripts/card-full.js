@@ -3,17 +3,21 @@ import { createElement, getRewievsCountMessage } from './utils.js';
 
 const root = document.querySelector('main');
 
-const getMemoryInputTemplate = (memoryOptions) => memoryOptions.reduce((accumulator, memoryOption) => /*html*/`${accumulator}
+const getMemoryInputTemplate = (memoryOptions) => memoryOptions.reduce((accumulator, memoryOption, index) => /*html*/`${accumulator}
 		<label class="card-full__memory-label">
 			${memoryOption}Gb
-			<input type="radio" name="memory" value="${memoryOption}" class="visually-hidden">
+			<input type="radio" name="memory" value="${memoryOption}" class="visually-hidden"
+				${index === (memoryOptions.length - 1) ? 'checked' : ''}
+			>
 		</label>
 	`, '');
 
-const getColorInputTemplate = (colorOptions) => colorOptions.reduce((accumulator, colorOption) => /*html*/`${accumulator}
+const getColorInputTemplate = (colorOptions) => colorOptions.reduce((accumulator, colorOption, index) => /*html*/`${accumulator}
 		<label class="card-full__color-label" style="background-color: #${colorOption.code};">
 			<span class="visually-hidden">${colorOption.name}</span>
-			<input type="radio" name="color" value="${colorOption.name}" class="visually-hidden">
+			<input type="radio" name="color" value="${colorOption.name}" class="visually-hidden"
+				${index === 0 ? 'checked' : ''}
+			>
 		</label>
 	`, '');
 
@@ -40,7 +44,7 @@ const gerDescriptionTemplate = (description) => description.split(/\n/).reduce((
 const getTemplate = ({type, brand, model, price, discount, cashback, isHit, isAvailable, rate, rewievsCount, pictures, memoryOptions, colorOptions, description, screenDiagonal, resolution, ram, battery, cameraCount, year, displayType}) =>
 	/*html*/`<article class="card-full">
 	<div class="card-full__info-container">
-		<h1 class="card-full__name">${type} ${brand} ${model}, ${Math.max(memoryOptions)}, ${colorOptions[0].name}</h1>
+		<h1 class="card-full__name">${type} ${brand} ${model} <span class="card-full__name-memory">${Math.max(...memoryOptions)}</span>Gb, <span class="card-full__name-color">${colorOptions[0].name}</span></h1>
 		<div class="card-full__info">
 			<p class="card-full__availability">${isAvailable ? 'Есть' : 'Нет'} в наличии</p>
 			<div class="card-full__rating-container">
@@ -58,15 +62,15 @@ const getTemplate = ({type, brand, model, price, discount, cashback, isHit, isAv
 		<form action="" class="card-full__form">
 			<section class="card-full__section">
 				<h2 class="card-full__subtitle">Объем памяти</h2>
-				<div class="card-full__memory-labels-container">
+				<fieldset class="card-full__memory-labels-container">
 					${getMemoryInputTemplate(memoryOptions)}
-				</div>
+				</fieldset>
 			</section>
 			<section class="card-full__section">
 				<h2 class="card-full__subtitle">Цвет</h2>
-				<div class="card-full__color-labels-container">
+				<fieldset class="card-full__color-labels-container">
 					${getColorInputTemplate(colorOptions)}
-				</div>
+				</fieldset>
 			</section>
 		</form>
 		<section class="card-full__section">
@@ -85,7 +89,7 @@ const getTemplate = ({type, brand, model, price, discount, cashback, isHit, isAv
 				</div>
 				<div class="card-full__feature-row">
 					<dt class="card-full__feature-name">Встроенная память, в Гб: </dt>
-					<dd class="card-full__feature-value">${Math.max(memoryOptions)}</dd>
+					<dd class="card-full__feature-value">${Math.max(...memoryOptions)}</dd>
 				</div>
 				<div class="card-full__feature-row">
 					<dt class="card-full__feature-name">Оперативная память, в Гб: </dt>
@@ -155,23 +159,69 @@ const getTemplate = ({type, brand, model, price, discount, cashback, isHit, isAv
 		</li>
 	</ul>
 
-	<div id="description" class="card-full__tab-content" role="tabpanel" aria-labelledby="description-tab">
-		${gerDescriptionTemplate(description)}
+	<div class="card-full__tab-content">
+		<div id="description" class="card-full__tab-content" role="tabpanel" aria-labelledby="description-tab">
+			${gerDescriptionTemplate(description)}
+		</div>
+		<div class="card-full__tab-content visually-hidden" id="features" role="tabpanel" aria-labelledby="features-tab">
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+		</div>
+		<div class="card-full__tab-content visually-hidden" id="accessories" role="tabpanel" aria-labelledby="accessories-tab">
+			Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
+		</div>
+		<div class="card-full__tab-content visually-hidden" id="reveiws" role="tabpanel" aria-labelledby="reveiws-tab">
+			Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
+		</div>
+		<div class="card-full__tab-content visually-hidden" id="questions" role="tabpanel" aria-labelledby="questions-tab">
+			But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?
+		</div>
 	</div>
-
-	<div class="card-full__tab-content" id="features" role="tabpanel" aria-labelledby="features-tab"></div>
-	<div class="card-full__tab-content" id="accessories" role="tabpanel" aria-labelledby="accessories-tab"></div>
-	<div class="card-full__tab-content" id="reveiws" role="tabpanel" aria-labelledby="reveiws-tab"></div>
-	<div class="card-full__tab-content" id="questions" role="tabpanel" aria-labelledby="questions-tab"></div>
 
 	<button class="card-full__close-button"><span class="visually-hidden">Вернуться в галлерею</span></button>
 </article>`;
+
+const onColorChange = (evt) => {
+	if (evt.target.name !== 'color') {
+		return;
+	}
+	const color = evt.target.value;
+	document.querySelector('.card-full__name-color').textContent = color;
+};
+
+const onMemoryChange = (evt) => {
+	if (evt.target.name !== 'memory') {
+		return;
+	}
+	const memory = evt.target.value;
+	document.querySelector('.card-full__name-memory').textContent = memory;
+};
+
+const onTabClick = (evt) => {
+	if (!evt.target.classList.contains('card-full__tab-link')) {
+		return;
+	}
+
+	const currentTab = document.querySelector('.card-full__tab-item[aria-selected="true"]');
+	currentTab.ariaSelected = false;
+	const currentContentId = `#${currentTab.id.replace('-tab', '')}`;
+	const currentContent = document.querySelector(currentContentId);
+	currentContent.classList.add('visually-hidden');
+
+	const targetTab = evt.target.closest('.card-full__tab-item');
+	targetTab.ariaSelected = true;
+	const targetId = `#${evt.target.href.split('#').pop()}`;
+	const targetContent = document.querySelector(targetId);
+	targetContent.classList.remove('visually-hidden');
+};
 
 const render = (id, onCloseClick) => {
 	const data = ITEMS_DATA.get(id);
 	const card = createElement(getTemplate(data));
 
 	card.querySelector('.card-full__close-button').addEventListener('click', onCloseClick);
+	card.querySelector('.card-full__memory-labels-container').addEventListener('change', onMemoryChange);
+	card.querySelector('.card-full__color-labels-container').addEventListener('change', onColorChange);
+	card.querySelector('.card-full__tab-list').addEventListener('click', onTabClick);
 	root.append(card);
 };
 
