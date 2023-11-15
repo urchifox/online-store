@@ -1,11 +1,16 @@
 import {render as renderGallery, remove as removeGallery} from './gallery.js';
-import {render as renderFullCard} from './full-card.js';
+import {render as renderFullCard, remove as removeFullCard} from './card-full.js';
 
-const onCardClick = (evt) => {
+function onCloseClick () {
+	removeFullCard();
+	renderGallery(onCardClick);
+}
+
+function onCardClick (evt) {
 	evt.preventDefault();
 	const cardId = evt.target.closest('.card-small').dataset.id;
 	removeGallery();
-	renderFullCard(cardId);
-};
+	renderFullCard(cardId, onCloseClick);
+}
 
 renderGallery(onCardClick);
