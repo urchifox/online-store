@@ -110,7 +110,7 @@ const getTemplate = ({type, brand, model, price, discount, cashback, isHit, isAv
 			</dl>
 		</section>
 		<div class="card-full__buying-container">
-			<p class="card-small__price">Цена: <b class="card-small__price-value">${price.toLocaleString('ru-RU')} <span class="visually-hidden">рублей</span></b></p>
+			<p class="card-full__price">Цена: <b class="card-full__price-value">${price.toLocaleString('ru-RU')} <span class="visually-hidden">рублей</span></b></p>
 			<button class="card-full__button button-solid">Добавить в корзину</button>
 			<button class="card-full__button button-outlined">Рассрочка от <span class="card-full__installment">10800</span><span class="visually-hidden">рублей в месяц</span></button>
 		</div>
