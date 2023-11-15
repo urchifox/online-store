@@ -7,6 +7,8 @@
     gap: 0 70px;
 }
 
+/*  INFO  */
+
 .card-full__info-container {
     grid-area: info;
 }
@@ -180,15 +182,129 @@
     content: ' \20BD  / в месяц';
 }
 
+/*  PICTURES  */
+
+.card-full__pictures-container {
+    position: relative;
+}
 
 .card-full__pictures-list {
     grid-area: pictures;
+    margin: 0;
+
+    padding: 0;
+    width: 170px;
+    height: 870px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    
+    list-style: none;
+    overflow: hidden;
 }
+
+.card-full__picture-item {
+    overflow: hidden;
+}
+
+.card-full__picture-item_big {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 500px;
+    height: 870px;
+    overflow:hidden;
+    pointer-events: none;
+}
+
+.card-full__picture {
+    display: block;
+    width: 170px;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.card-full__picture-item:hover .card-full__picture {
+    transform: scale(1.2);
+}
+.card-full__picture-item:active .card-full__picture {
+    transform: scale(1);
+}
+.card-full__picture-item:focus .card-full__picture {
+    outline: 1px solid black;
+}
+
+.card-full__picture-item_big .card-full__picture {
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width: 500px;
+    height: auto;
+    object-fit: cover;
+    cursor: auto;
+}
+
+/*  TABS  */
 
 .card-full__tab-list {
     grid-area: tabs;
+    margin: 0;
+    margin-top: 45px;
+    margin-bottom: 30px;
+
+    padding: 15px 0;
+    border-bottom: 1px solid rgb(0 21 36 / 0.1);
+    
+    display: flex;
+    gap: 45px;
+
+    font-size: 18px;
+    font-weight: 500;
+    list-style: none;
 }
+
+.card-full__tab-link {
+    position: relative;
+    color: #797D80;
+    text-decoration: none;
+}
+.card-full__tab-link:hover {
+    color: #001524;
+}
+.card-full__tab-link:active {
+    color: #001524;
+    opacity: 0.7;
+}
+.card-full__tab-link:focus-visible {
+    color: #001524;
+    outline: 1px solid #001524;
+    outline-offset: 3px;
+}
+.card-full__tab-item[aria-selected="true"] .card-full__tab-link {
+    color: #001524;
+}
+.card-full__tab-item[aria-selected="true"] .card-full__tab-link::after {
+    content: '';
+    position: absolute;
+    bottom: -17px;
+    left: 0;
+    right: 0;
+    height: 3px;
+
+    background-color: #001524;
+}
+
+/*  TAB-CONTENT  */
 
 .card-full__tab-content {
     grid-area: tab-content;
+    font-size: 16px;
+}
+
+.card-full__description {
+    margin-top: 0;
+    margin-bottom: 10 px;
 }
