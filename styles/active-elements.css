@@ -9,9 +9,12 @@
 .link:hover {
     color: #DE012C;
 }
-.link:focus-visible,
 .link:active {
-    outline: none;
+    color: #C20127;
+}
+.link:focus-visible {
+    outline: 1px solid #C20127;
+    outline-offset: 3px;
     color: #C20127;
 }
 .link:disabled {
@@ -28,9 +31,12 @@
 .button-solid:hover {
     background: #C20127;
 }
-.button-solid:focus-visible,
 .button-solid:active {
-    border: 2px solid #001524;
+    background: #DE012C;
+}
+.button-solid:focus-visible {
+    outline: 2px solid #001524;
+    outline-offset: 3px;
     background: #DE012C;
 }
 .button-solid:disabled {
@@ -49,11 +55,14 @@
     color: #FFF;
     background: #001524;
 }
-.button-outlined:focus-visible,
 .button-outlined:active {
     border: 2px solid #001524;
     color: #1C1919;
     background-color: transparent;
+}
+.button-outlined:focus-visible {
+    outline: 2px solid #001524;
+    outline-offset: 3px;
 }
 .button-outlined:disabled {
     border: 1px solid #CCCACB;
