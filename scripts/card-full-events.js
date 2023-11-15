@@ -33,4 +33,12 @@ const onTabClick = (evt) => {
 	targetContent.classList.remove('visually-hidden');
 };
 
-export {onColorChange, onMemoryChange, onTabClick};
+const onPictureClick = (evt) => {
+	const currentPicture = document.querySelector('.card-full__picture-item_big');
+	currentPicture.classList.remove('card-full__picture-item_big');
+
+	const targetPicture = evt.target.closest('.card-full__picture-item');
+	targetPicture.classList.add('card-full__picture-item_big');
+};
+
+export {onColorChange, onMemoryChange, onTabClick, onPictureClick};

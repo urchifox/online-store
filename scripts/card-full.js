@@ -1,4 +1,4 @@
-import { onColorChange, onMemoryChange, onTabClick } from './card-full-events.js';
+import { onColorChange, onMemoryChange, onPictureClick, onTabClick } from './card-full-events.js';
 import { ITEMS_DATA } from './mock/items-data.js';
 import { createElement, getRewievsCountMessage } from './utils.js';
 
@@ -190,6 +190,7 @@ const render = (id, onCloseClick) => {
 	card.querySelector('.card-full__memory-labels-container').addEventListener('change', onMemoryChange);
 	card.querySelector('.card-full__color-labels-container').addEventListener('change', onColorChange);
 	card.querySelector('.card-full__tab-list').addEventListener('click', onTabClick);
+	card.querySelector('.card-full__pictures-list').addEventListener('click', onPictureClick);
 	root.append(card);
 };
 
