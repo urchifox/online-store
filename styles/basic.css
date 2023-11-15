@@ -1,7 +1,7 @@
 @font-face {
     font-family: 'M PLUS 1p';
     src: local('M PLUS 1p'),
-        url('/fonts/MPLUS1p-Regular.ttf') format('truetype');
+        url('../fonts/MPLUS1p-Regular.ttf') format('truetype');
     font-style: normal;
     font-weight: 400;
 }
@@ -9,7 +9,7 @@
 @font-face {
     font-family: 'M PLUS 1p';
     src: local('M PLUS 1p'),
-        url('/fonts/MPLUS1p-Medium.ttf') format('truetype');
+        url('../fonts/MPLUS1p-Medium.ttf') format('truetype');
     font-style: normal;
     font-weight: 500;
 }
